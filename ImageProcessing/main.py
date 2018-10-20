@@ -35,6 +35,10 @@ def main():
 
     heatmap(heatdata)
 
+    overray(img1)
+
+
+
 
 
 def Quantization(img):
@@ -81,7 +85,6 @@ def heatmap(heatdata):
     box("off")  # 枠線の削除
     fig.subplots_adjust(left=0,bottom=0,right= 1,top=1)
 
-    print(heatdata)
     plt.pcolor(heatdata,cmap=plt.cm.Reds)
     plt.savefig('heatmap.png')
 
@@ -97,6 +100,22 @@ def mkheatdata(img):
             array[n][m]=np.sum(img[x*n:x*(n+1)-1,y*m:y*(m+1)-1])
     array=array[::-1][::1]
     return array
+
+def overray(img):
+    heatpic = cv2.imread("heatmap.png")
+    """
+    print(heatpic)
+    for i in range(len(heatpic)):
+        for j in range(len(heatpic[i])):
+            if heatpic[i][j][0]>220 and heatpic[i][j][1]>220 and heatpic[i][j][2]>220:
+                heatpic[i][j]=[0,0,0,0]
+            else:
+                heatpic[i][j][3]=180
+    cv2.imwrite("heatmap2.png",heatpic)
+    heatpic=cv2.imread("heatmap2.png")
+    """
+    result = cv2.addWeighted(img, 0.7, heatpic, 0.3, 1)
+    cv2.imwrite("result.jpg", result)
 
 def main2():
     # 入力画像の読み込み
