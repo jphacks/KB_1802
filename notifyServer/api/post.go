@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"github.com/KB_1802/notifyServer/db"
 	"github.com/KB_1802/notifyServer/notify"
 	"github.com/gin-gonic/gin"
@@ -26,6 +27,13 @@ func TestLine(c *gin.Context) {
 
 	info := db.GetNotifyRecord()
 	notify.SendLINEMessage(info.LINEId)
+}
+
+func DirtinessCheck(c *gin.Context) {
+
+	fmt.Println("call dirtinessCheck")
+	c.AbortWithStatus(204)
+
 }
 
 //func PostTest(c *gin.Context) {

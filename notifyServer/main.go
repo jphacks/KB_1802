@@ -31,6 +31,8 @@ func main() {
 	router.POST("/twitter", api.TestTwitter)
 	router.POST("/line", api.TestLine)
 
+	router.POST("/dirtinessCheck", api.DirtinessCheck)
+
 
 	router.GET("/login", api.Login)
 	router.GET("/callback", api.GetUserId)
