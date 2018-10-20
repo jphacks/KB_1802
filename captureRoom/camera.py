@@ -7,9 +7,9 @@ import pymysql.cursors
 
 #for JPHACKS 2018
 
-picDir = "./"
+
 timeStr = time.strftime("%Y%m%d-%H%M%S")
-filename = picDir + "header" + timeStr + ".jpg"
+filename = "header" + timeStr + ".jpg"
 
 # take photo and save temp
 with picamera.PiCamera() as camera:
@@ -21,7 +21,7 @@ with picamera.PiCamera() as camera:
 
 # very danger code
 serverPath = "/home/ubuntu/camData"
-cmd = "scp " + filename + " ubuntu@52.197.145.249:" + serverPath
+cmd = "scp " + "./" + filename + " ubuntu@52.197.145.249:" + serverPath
 scp = pexpect.spawn(cmd)
 scp.expect("Enter passphrase")
 scp.sendline("piToAWS")
