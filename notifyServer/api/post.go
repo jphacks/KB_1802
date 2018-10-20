@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/KB_1802/notifyServer/db"
 	"github.com/KB_1802/notifyServer/notify"
 	"github.com/gin-gonic/gin"
 )
@@ -19,6 +20,12 @@ func TestTwitter(c *gin.Context) {
 
 	notify.SendTwitterMessage()
 
+}
+
+func TestLine(c *gin.Context) {
+
+	info := db.GetNotifyRecord()
+	notify.SendLINEMessage(info.LINEId)
 }
 
 //func PostTest(c *gin.Context) {

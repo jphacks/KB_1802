@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/KB_1802/notifyServer/api"
 	"github.com/KB_1802/notifyServer/constant"
+	"github.com/KB_1802/notifyServer/db"
 	"github.com/KB_1802/notifyServer/deployMode"
 	"github.com/gin-gonic/gin"
 )
@@ -22,16 +23,17 @@ BOTを「J( 'ー`)し」にして部屋の汚れ具合についてコメント�
 func main() {
 
 	deployMode.Set()
+	db.InitDB()
 
 	router := gin.New()
 	router.Use(gin.Logger())
 
-
 	router.POST("/twitter", api.TestTwitter)
+	router.POST("/line", api.TestLine)
+
 
 	router.GET("/login", api.Login)
 	router.GET("/callback", api.GetUserId)
 
 	router.Run(":" + constant.Port)
 }
-
