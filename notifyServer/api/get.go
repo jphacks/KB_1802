@@ -114,3 +114,13 @@ func GetUserId(c *gin.Context) {
 
 	notify.SendLINEMessage(userId)
 }
+
+/*
+画像返却テスト
+ */
+func GetImage(c *gin.Context) {
+
+	c.Status(http.StatusOK)
+	c.File(constant.ImagePath + "/header20181020-144645.jpg")
+
+}
