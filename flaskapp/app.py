@@ -1,16 +1,9 @@
-from flask import Flask, render_template
-from flask.ext.assets import Environment, Bundle
-
+from flask import Flask
 app = Flask(__name__)
 
-assets = Environment(app)
-assets.url = app.static_url_path
-scss = Bundle('soisy', filters='pyscss', output='all.css')
-assets.register('scss_all', scss)
-
-@app.route('/', methods=['POST'])
+@app.route('/')
 def hello_world():
-	return 'yeew'
+	return 'Hello, World!'
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

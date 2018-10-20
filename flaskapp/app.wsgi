@@ -1,6 +1,6 @@
-activate_this = '/home/ubuntu/test/shimizu/KB_1802/flaskapp/venv/bin/activate_this.py'
-with open(activate_this) as f:
-	exec(f.read(), dict(__file__=activate_this))
+# activate_this = '/home/ubuntu/test/shimizu/KB_1802/flaskapp/venv/bin/activate_this.py'
+# with open(activate_this) as f:
+	# exec(f.read(), dict(__file__=activate_this))
 
 import sys
 import logging

@@ -1,4 +1,4 @@
-#!/home/ubuntu/test/shimizu/KB_1802/flaskapp/venv/bin/python3
+#!/home/ubuntu/test/shimizu/KB_1802/flaskapp/venv/bin/python
 
 # -*- coding: utf-8 -*-
 import re
