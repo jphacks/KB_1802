@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/KB_1802/notifyServer/constant"
+	"github.com/KB_1802/notifyServer/db"
 	"github.com/KB_1802/notifyServer/notify"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -113,4 +114,17 @@ func GetUserId(c *gin.Context) {
 	//fmt.Println(userId)
 
 	notify.SendLINEMessage(userId)
+}
+
+/*
+画像返却テスト
+ */
+func GetImage(c *gin.Context) {
+
+	cam := db.GetNewestCamDataRecord()
+	path := cam.FilePath
+	fmt.Println(path)
+	c.Status(http.StatusOK)
+	c.File(path)
+
 }

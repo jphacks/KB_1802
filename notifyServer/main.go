@@ -36,6 +36,7 @@ func main() {
 
 	router.GET("/login", api.Login)
 	router.GET("/callback", api.GetUserId)
+	router.GET("/image", api.GetImage)
 
 	router.Run(":" + constant.Port)
 }

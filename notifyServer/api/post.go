@@ -31,6 +31,19 @@ func TestLine(c *gin.Context) {
 
 func DirtinessCheck(c *gin.Context) {
 
+	dirtiness := 0 //test
+	//image := nil //test
+
+
+
+	//imageどうする？
+	if dirtiness == 2 { //twitter
+		notify.SendTwitterMessage()
+	} else if dirtiness == 1 { //LINE
+		info := db.GetNotifyRecord()
+		notify.SendLINEMessage(info.LINEId)
+	}
+
 	fmt.Println("call dirtinessCheck")
 	c.AbortWithStatus(204)
 

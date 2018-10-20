@@ -21,6 +21,9 @@ const (
 	//Twitter
 	TwitterNotifyUrl = "https://maker.ifttt.com/trigger/send_twitter/with/key/fRkVln270KZD_sfpqwuBrVISEXQTMDjM9ntQJP_GYLg"
 
+	//GetImage
+	ImagePath = "/home/ubuntu/camData"
+
 	)
 
 var (
