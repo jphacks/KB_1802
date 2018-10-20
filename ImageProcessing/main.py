@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from pylab import *
 
 def main():
     # 入力画像の読み込み
@@ -20,20 +21,18 @@ def main():
     edge0=Edgepic(res0)
     edge1=Edgepic(res1)
 
-    print(edge1)
-
     cv2.imwrite("res0.jpg",edge0)
     cv2.imwrite("res1.jpg",edge1)
 
     edgenum0=Edgenum(res0)
     edgenum1=Edgenum(res1)
 
-    print(edgenum0)
-    print(edgenum1)
-
     diffpic=diff(edge0,edge1)
 
     cv2.imwrite("diff2.jpg",diffpic)
+
+    heatmap(diffpic)
+
 
 
 def Quantization(img):
@@ -71,6 +70,14 @@ def diff(img0,img1):
     diff = cv2.absdiff(img0, img1)
     return diff
 
+def heatmap(diffpic):
+    fig,ax=plt.subplots()
+    ax.tick_params(labelbottom="off", bottom="off")  # x軸の削除
+    ax.tick_params(labelleft="off", left="off")  # y軸の削除
+    ax.set_xticklabels([])
+    box("off")  # 枠線の削除
+    plt.pcolor(diffpic)
+    plt.savefig('image.png')
 
 def main2():
     # 入力画像の読み込み
@@ -145,5 +152,4 @@ def draw_heatmap(x, y):
 
 if __name__ == "__main__":
     main()
-    draw_heatmap([1],[1])
 
