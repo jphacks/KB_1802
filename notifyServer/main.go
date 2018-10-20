@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/KB_1802/notifyServer/api"
 	"github.com/gin-gonic/gin"
-	"github.com/nagato/line-test/api"
 )
 
 /*
