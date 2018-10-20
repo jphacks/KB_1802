@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 def main():
     # 入力画像の読み込み
-    img0 = cv2.imread("photo0.jpg")
+    img0 = cv2.imread("photo1.jpg")
     img1 = cv2.imread("photo2.jpg")
 
     #エッジを出してみる
