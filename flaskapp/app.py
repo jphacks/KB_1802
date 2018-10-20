@@ -1,10 +1,14 @@
-from flask import Flask
-from flaskext.sass import sass
+from flask import Flask, render_template
+from flask.ext.assets import Environment, Bundle
 
 app = Flask(__name__)
-sass(app, input_dir='assets/', output_dir='static/css')
 
-@app.route('/')
+assets = Environment(app)
+assets.url = app.static_url_path
+scss = Bundle('soisy', filters='pyscss', output='all.css')
+assets.register('scss_all', scss)
+
+@app.route('/', methods=['POST'])
 def hello_world():
 	return 'yeew'
 
