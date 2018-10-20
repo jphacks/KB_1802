@@ -9,6 +9,7 @@ from pylab import *
 def main():
     # 入力画像の読み込み
     img0 = cv2.imread("photo1.jpg")
+<<<<<<< HEAD
     img1 = cv2.imread("photo2.jpg")
 
     res0=Quantization(img0)
@@ -120,6 +121,8 @@ def overray(img):
 def main2():
     # 入力画像の読み込み
     img0 = cv2.imread("photo0.jpg")
+=======
+>>>>>>> master
     img1 = cv2.imread("photo2.jpg")
 
     #エッジを出してみる
