@@ -109,3 +109,8 @@ atlassian-ide-plugin.xml
 
 # hot reloader
 tmp/*
+
+
+# dep golang
+Gopkg.lock
+Gopkg.toml
