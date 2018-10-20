@@ -2,9 +2,15 @@ import cv2
 import numpy as np
 
 import matplotlib
+import requests
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from pylab import *
+
+import mysql.connector
+
+from urllib.parse import urlparse
 
 def main():
     # 入力画像の読み込み
@@ -188,6 +194,29 @@ def draw_heatmap(x, y):
     plt.show()
     plt.savefig('image.png')
 
+def post():
+    r=requests.post("http://52.197.145.249:9000/dirtinessCheck")
+    print(r)
+
+
+def sql():
+    url=urlparse("mysql://soisy:boaboa@52.197.145.249")
+    conn = mysql.connector.connect(
+        host=url.hostname or 'localhost',
+        port=url.port or 3306,
+        user=url.username or 'root',
+        password=url.password or '',
+        database=url.path[1:],
+    )
+    print(conn.is_connected())
+
+    cur=conn.cursor()
+    cur.execute("USE soisy")
+    cur.execute("SELECT*FROM camData")
+    print(cur.fetchall())
+
 if __name__ == "__main__":
-    main()
+    #main()
+    #post()
+    sql()
 
