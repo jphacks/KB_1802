@@ -31,7 +31,9 @@ def main():
 
     cv2.imwrite("diff2.jpg",diffpic)
 
-    heatmap(diffpic)
+    heatdata=mkheatdata(diffpic)
+
+    heatmap(heatdata)
 
 
 
@@ -70,14 +72,31 @@ def diff(img0,img1):
     diff = cv2.absdiff(img0, img1)
     return diff
 
-def heatmap(diffpic):
+def heatmap(heatdata):
     fig,ax=plt.subplots()
+    fig=plt.figure(figsize=(128,72),dpi=10)
     ax.tick_params(labelbottom="off", bottom="off")  # x軸の削除
     ax.tick_params(labelleft="off", left="off")  # y軸の削除
     ax.set_xticklabels([])
     box("off")  # 枠線の削除
-    plt.pcolor(diffpic)
-    plt.savefig('image.png')
+    fig.subplots_adjust(left=0,bottom=0,right= 1,top=1)
+
+    print(heatdata)
+    plt.pcolor(heatdata,cmap=plt.cm.Reds)
+    plt.savefig('heatmap.png')
+
+def mkheatdata(img):
+    N=10
+    M=10
+    y=int(np.shape(img)[1]/N)
+    x=int(np.shape(img)[0]/M)
+    array=np.zeros((N,M))
+    cv2.imwrite("img.jpg",img)
+    for n in range(N):
+        for m in range(M):
+            array[n][m]=np.sum(img[x*n:x*(n+1)-1,y*m:y*(m+1)-1])
+    array=array[::-1][::1]
+    return array
 
 def main2():
     # 入力画像の読み込み
