@@ -2,6 +2,9 @@ package main
 
 import (
 	"github.com/KB_1802/notifyServer/api"
+	"github.com/KB_1802/notifyServer/constant"
+	"github.com/KB_1802/notifyServer/db"
+	"github.com/KB_1802/notifyServer/deployMode"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,19 +21,21 @@ BOTを「J( 'ー`)し」にして部屋の汚れ具合についてコメント�
  */
 
 func main() {
-	//port := os.Getenv("PORT")
-	port := "9000"
+
+	deployMode.Set()
+	db.InitDB()
 
 	router := gin.New()
 	router.Use(gin.Logger())
 
-	//この処理を追記
-	//router.POST("/linetest", api.PostTest)
-	//router.POST("/line", api.Post)
+	router.POST("/twitter", api.TestTwitter)
+	router.POST("/line", api.TestLine)
+
+	router.POST("/dirtinessCheck", api.DirtinessCheck)
+
 
 	router.GET("/login", api.Login)
-	router.GET("/callback", api.GetAccessToken)
+	router.GET("/callback", api.GetUserId)
 
-	router.Run(":" + port)
+	router.Run(":" + constant.Port)
 }
-
