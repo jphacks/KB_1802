@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/KB_1802/notifyServer/constant"
+	"github.com/KB_1802/notifyServer/db"
 	"github.com/KB_1802/notifyServer/notify"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -120,7 +121,10 @@ func GetUserId(c *gin.Context) {
  */
 func GetImage(c *gin.Context) {
 
+	cam := db.GetNewestCamDataRecord()
+	path := cam.FilePath
+	fmt.Println(path)
 	c.Status(http.StatusOK)
-	c.File(constant.ImagePath + "/header20181020-144645.jpg")
+	c.File(path)
 
 }
