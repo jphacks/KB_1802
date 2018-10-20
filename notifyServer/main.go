@@ -26,9 +26,8 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
 
-	//この処理を追記
-	//router.POST("/linetest", api.PostTest)
-	//router.POST("/line", api.Post)
+
+	router.POST("/twitter", api.TestTwitter)
 
 	router.GET("/login", api.Login)
 	router.GET("/callback", api.GetUserId)

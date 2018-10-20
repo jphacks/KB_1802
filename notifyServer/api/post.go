@@ -1,5 +1,10 @@
 package api
 
+import (
+	"github.com/KB_1802/notifyServer/notify"
+	"github.com/gin-gonic/gin"
+)
+
 type tokenRequest struct {
 	grant    string `json:"grant_type"`
 	code     string `json:"code"`
@@ -9,6 +14,12 @@ type tokenRequest struct {
 }
 
 
+
+func TestTwitter(c *gin.Context) {
+
+	notify.SendTwitterMessage()
+
+}
 
 //func PostTest(c *gin.Context) {
 //
