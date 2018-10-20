@@ -212,11 +212,17 @@ def sql():
 
     cur=conn.cursor()
     cur.execute("USE soisy")
-    cur.execute("SELECT*FROM camData")
-    print(cur.fetchall())
+    cur.execute("UPDATE camData SET isClean=1 ")
+
+    cur.execute("SELECT * FROM camData as m WHERE NOT EXISTS "
+                    "(SELECT 1 FROM camData as s WHERE m.CAPTUREDATE>s.CAPTUREDATE)")
+    print(cur.fetchall()[0][0])
+    str=cur.fetchall()[0][0]
+    cv2.imread(str)
+
 
 if __name__ == "__main__":
     #main()
-    #post()
+    post()
     sql()
 
