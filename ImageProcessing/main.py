@@ -12,6 +12,8 @@ import mysql.connector
 
 from urllib.parse import urlparse
 
+from datetime import datetime
+
 PATH="home/ubuntu/result"
 
 def main():
