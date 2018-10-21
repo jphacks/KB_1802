@@ -16,7 +16,7 @@ PATH="home/ubuntu/result"
 
 def main():
     # 元画像
-    img0 = cv2.imread("photo1.jpg")
+    img0 = sqlreadold()
     #最新画像
     img1 = sqlreadnew()
 
