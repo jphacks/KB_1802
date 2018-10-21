@@ -1,0 +1,43 @@
+{% extends "default.twig" %}
+
+{% block title %}
+Soisy
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>現在の汚部屋</h1>
+    <div class="columns">
+        <div class="column is-three-fifths">
+            <img src="{{ raw_camera_data }}">
+        </div>
+        <div class="column">
+            <h2>
+                評価
+            </h2>
+            <p class="title is-size-1 has-text-info">{{ evaluation }}</p>
+            <h2>
+                スコア
+            </h2>
+            <p class="title"><span class="clean_seq">{{ clean_seq }}</span>/100</p>
+        </div>
+    </div>
+    <h1>部屋ログ</h1>
+    <div class="columns">
+        <div class="column is-three-fifths">
+            <canvas id="myChart" style="width:100%;height:300px"></canvas>
+        </div>
+        <div class="column">
+            <article class="message is-primary">
+            <div class="message-header">
+                <p>2018年10月20日</p>
+            </div>
+            <div class="message-body">
+                <img src="http://ec2-52-197-145-249.ap-northeast-1.compute.amazonaws.com/camData/header20181020-192741.jpg" class="past-camera">
+            </div>
+            </article>
+        </div>
+    </div>
+</div>
+{% include "includes/scripts.twig" %}
+{% endblock %}

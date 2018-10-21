@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+$family-sans-serif: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "游ゴシック体", "Yu Gothic", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+$family-primary: $family-sans-serif;
+
+//$body-size: 1rem;
+$body-line-height: 1.9;
+$text: hsl(0, 0%, 98%);
+
+$primary: rgba(71, 164, 220, 1);
+$info: rgba(212, 175, 185, 1);
+$success: rgba(187, 222, 240, 1);
+$warning: rgba(235, 164, 21, 1);
+$danger: rgba(164, 36, 59, 1);
+$dark: rgba(16, 28, 46, 1);
+$background: rgba(16, 28, 46, 1);
+
+body {
+  background: $dark;
+  height: 100%;
+}
+
+.hero {
+  background:url('http://ec2-52-197-145-249.ap-northeast-1.compute.amazonaws.com/webApp/public/assets/images/hero.png') center center;
+  background-size: cover;
+}
+
+.content {
+  .container {
+    p {
+      color: $text;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: $text;
+    }
+
+    h1 {
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-bottom: solid 1px $text;
+      //display: inline-block;
+      text-align: center;
+    }
+
+    strong {
+      color: $text;
+    }
+    .button {
+      margin: 1rem;
+    }
+  }
+}
+
+.clean_seq {
+  font-size: 9rem;
+}
+
+// Bulma css
+@import "bulma";
