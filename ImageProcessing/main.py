@@ -13,9 +13,10 @@ import mysql.connector
 from urllib.parse import urlparse
 
 def main():
-    # 入力画像の読み込み
+    # 元画像
     img0 = cv2.imread("photo1.jpg")
-    img1 = cv2.imread("photo2.jpg")
+    #最新画像
+    img1 = sqlreadnew()
 
     res0=Quantization(img0)
     res1=Quantization(img1)
@@ -195,11 +196,12 @@ def draw_heatmap(x, y):
     plt.savefig('image.png')
 
 def post():
-    r=requests.post("http://52.197.145.249:9000/dirtinessCheck")
+    x=str(2)
+    r=requests.post("http://52.197.145.249:9000/dirtinessCheck?level="+x)
     print(r)
 
 
-def sql():
+def sqlreadnew():
     url=urlparse("mysql://soisy:boaboa@52.197.145.249")
     conn = mysql.connector.connect(
         host=url.hostname or 'localhost',
@@ -207,22 +209,47 @@ def sql():
         user=url.username or 'root',
         password=url.password or '',
         database=url.path[1:],
+        charset='utf8',
     )
     print(conn.is_connected())
 
     cur=conn.cursor()
     cur.execute("USE soisy")
-    cur.execute("UPDATE camData SET isClean=1 ")
+#    cur.execute("UPDATE camData SET isClean=1 ")
 
     cur.execute("SELECT * FROM camData as m WHERE NOT EXISTS "
                     "(SELECT 1 FROM camData as s WHERE m.CAPTUREDATE>s.CAPTUREDATE)")
-    print(cur.fetchall()[0][0])
-    str=cur.fetchall()[0][0]
-    cv2.imread(str)
+    add=str(cur.fetchall()[0][0])
+
+    print(add)
+    return cv2.imread(add)
+
+def sqlreadold():
+    url=urlparse("mysql://soisy:boaboa@52.197.145.249")
+    conn = mysql.connector.connect(
+        host=url.hostname or 'localhost',
+        port=url.port or 3306,
+        user=url.username or 'root',
+        password=url.password or '',
+        database=url.path[1:],
+        charset='utf8',
+    )
+    print(conn.is_connected())
+
+    cur=conn.cursor()
+    cur.execute("USE soisy")
+#    cur.execute("UPDATE camData SET isClean=1 ")
+
+    cur.execute("SELECT * FROM camData as m WHERE NOT EXISTS "
+                    "(SELECT 1 FROM camData as s WHERE isClean==1)")
+    add=str(cur.fetchall()[0][0])
+
+    print(add)
+    return cv2.imread(add)
 
 
 if __name__ == "__main__":
-    #main()
+    main()
     post()
-    sql()
+
 
