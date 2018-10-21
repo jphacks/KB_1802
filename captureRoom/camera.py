@@ -3,7 +3,7 @@ import picamera
 import pexpect
 import subprocess
 import pymysql.cursors
-
+import urllib.request
 
 #for JPHACKS 2018
 
@@ -52,3 +52,8 @@ cmd = "rm " + filename
 subprocess.call(cmd.split())
 
 #send HTTP Request
+url = 'http://52.197.145.249/pyTest.py'
+req = urllib.request.Request(url)
+with urllib.request.urlopen(req) as res :
+    body = res.read()
+print (body)
