@@ -174,7 +174,7 @@ def sqlreadold():
 #    cur.execute("UPDATE camData SET isClean=1 ")
 
     cur.execute("SELECT * FROM camData as m WHERE NOT EXISTS "
-                    "(SELECT 1 FROM camData as s WHERE isClean==1)")
+                    "(SELECT 1 FROM camData as s WHERE isClean=1)")
     add=str(cur.fetchall()[0][0])
 
     print(add)
