@@ -50,15 +50,15 @@ LINEでの通知に始まり、最終的には汚部屋をTwitterに晒し上げ
 今回スポンサーから提供されたAPI、製品などの外部技術があれば記述をして下さい。
 
 * LINE Messaging API
+* AWS
 * IFTTT
-* 
 
 #### フレームワーク・ライブラリ・モジュール
-* AWS
 * MySQL
 * gin (golang)
 * slim (php)
 * bulma (css)
+* openCV
 
 #### デバイス
 * Raspberry pi
