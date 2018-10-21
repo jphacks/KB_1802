@@ -14,7 +14,7 @@ from urllib.parse import urlparse
 
 from datetime import datetime
 
-PATH="home/ubuntu/result"
+PATH="/home/ubuntu/result/"
 
 def main():
     # 元画像
@@ -48,8 +48,8 @@ def main():
 
     result = overray(img1)
 
-    nowtime=str(datetime.now().strftime("%Y/%m/%d-%H:%M:%S"))
-    cv2.imwrite(PATH+nowtime+"/result.jpg",result)
+    nowtime=str(datetime.now().strftime("%Y%m%d-%H%M%S"))
+    cv2.imwrite(PATH+nowtime+"result.jpg",result)
 
     sqlregist(PATH,nowtime)
 
@@ -199,11 +199,16 @@ def sqlregist(path,nowtime):
     cur.execute("USE soisy")
 #    cur.execute("UPDATE camData SET isClean=1 ")
     i=0
-    cur.execute("INSERT INTO resultData (CleanSeq,ResultDate,ResultFilePath) VALUES ("+str(i)+","+nowtime+","+path+nowtime+"/result.jpg)")
+    pathtemp=path+nowtime+"result.jpg"
+
+
+    #cur.execute("INSERT INTO resultData (ResultDate,ResultFilePath,CleanSeq) VALUES ("+nowtime+","+str(pathtemp)+","+str(i)+")")
+
+
 
     cur.execute("SELECT * FROM resultData as m WHERE NOT EXISTS "
                     "(SELECT 1 FROM resultData as s WHERE m.resultDate>s.resultDate)")
-    i=int(cur.fetchall()[0])
+    i=int(cur.fetchall()[0][2])
     print(i)
     if i>5:
         post()
@@ -211,7 +216,7 @@ def sqlregist(path,nowtime):
     else:
         i+=1
 
-    cur.execute("INSERT INTO resultData (CleanSeq,ResultDate,ResultFilePath) VALUES ("+str(i)+","+nowtime+","+path+nowtime+"/result.jpg)")
+    #cur.execute("INSERT INTO resultData (CResultDate,ResultFilePath,CleanSeq) VALUES ("+nowtime+","+path+nowtime+"result.jpg,"+str(i)+")")
 
     print(add)
 
