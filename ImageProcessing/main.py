@@ -14,7 +14,7 @@ from urllib.parse import urlparse
 
 from datetime import datetime
 
-PATH="/home/ubuntu/result/"
+PATH="/home/ubuntu/KB_1802/ImageProcessing/"
 
 def main():
     # 元画像
@@ -50,7 +50,7 @@ def main():
 
     nowtime=str(datetime.now().strftime("%Y%m%d-%H%M%S"))
     cv2.imwrite(PATH+nowtime+"result.jpg",result)
-    cv2.imwrite("result.jpg",result)
+    cv2.imwrite(PATH+"result.jpg",result)
 
     sqlregist(PATH,nowtime)
 
