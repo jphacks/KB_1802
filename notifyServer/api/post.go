@@ -5,6 +5,7 @@ import (
 	"github.com/KB_1802/notifyServer/db"
 	"github.com/KB_1802/notifyServer/notify"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 type tokenRequest struct {
@@ -31,7 +32,18 @@ func TestLine(c *gin.Context) {
 
 func DirtinessCheck(c *gin.Context) {
 
-	dirtiness := 0 //test
+	level := c.Query("level")
+
+	if level == "" {
+		fmt.Println("level is empty.")
+		return
+	}
+
+	dirtiness, err := strconv.Atoi(level)
+	if err != nil {
+		fmt.Println("cannot cast 'level' to int.")
+		return
+	}
 	//image := nil //test
 
 

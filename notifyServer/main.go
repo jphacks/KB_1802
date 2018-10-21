@@ -6,6 +6,8 @@ import (
 	"github.com/KB_1802/notifyServer/db"
 	"github.com/KB_1802/notifyServer/deployMode"
 	"github.com/gin-gonic/gin"
+	"math/rand"
+	"time"
 )
 
 /*
@@ -24,6 +26,7 @@ func main() {
 
 	deployMode.Set()
 	db.InitDB()
+	rand.Seed(time.Now().UnixNano())
 
 	router := gin.New()
 	router.Use(gin.Logger())
