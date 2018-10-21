@@ -46,7 +46,7 @@ def main():
 
     result = overray(img1)
 
-    nowtime=str(datetime.now())
+    nowtime=str(datetime.now().strftime("%Y/%m/%d-%H:%M:%S"))
     cv2.imwrite(PATH+nowtime,result)
 
     sqlregist(PATH,nowtime)
