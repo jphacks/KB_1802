@@ -50,7 +50,7 @@ def main():
 
     nowtime=str(datetime.now().strftime("%Y%m%d-%H%M%S"))
     cv2.imwrite(PATH+nowtime+"result.jpg",result)
-    cv2.imwrite(PATH+"result.jpg",result)
+    cv2.imwrite("result.jpg",result)
 
     sqlregist(PATH,nowtime)
 
