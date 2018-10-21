@@ -198,11 +198,13 @@ def sqlregist(path,nowtime):
     cur=conn.cursor()
     cur.execute("USE soisy")
 #    cur.execute("UPDATE camData SET isClean=1 ")
+    i=0
+    cur.execute("INSERT INTO resultData (CleanSeq,ResultDate,ResultFilePath) VALUES ("+i+","+nowtime+","+path+nowtime+")")
 
     cur.execute("SELECT * FROM resultData as m WHERE NOT EXISTS "
                     "(SELECT 1 FROM resultData as s WHERE m.resultDate>s.resultDate)")
-    i=int(cur.fetchall()[0][0])
-
+    i=int(cur.fetchall()[0])
+    print(i)
     if i>5:
         post()
         i=0
