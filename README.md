@@ -1,6 +1,6 @@
 # Soisy
 
-[![Soisy](image.png)](https://www.youtube.com/watch?v=2mT3TlUnclo)
+[![Soisy](image.png)](https://youtu.be/2mT3TlUnclo)
 
 
 ![Soisy](presen/prs_title.png)
