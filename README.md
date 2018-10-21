@@ -1,4 +1,4 @@
-# Soisy
+# SOISY
 
 [![Soisy](image.png)](https://youtu.be/2mT3TlUnclo)
 
