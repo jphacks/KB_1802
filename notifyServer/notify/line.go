@@ -4,8 +4,12 @@ import (
 	"fmt"
 	"github.com/KB_1802/notifyServer/constant"
 	"github.com/line/line-bot-sdk-go/linebot"
-
+	"math/rand"
 )
+
+var botText = []string{
+	"J( 'ー`)し　たかしへ\nちゃんと掃除しているかい？",
+	"J( 'ー`)し　たかしへ\n最近部屋の掃除をしてないんじゃないかい？"}
 
 func SendLINEMessage (id string) {
 
@@ -18,7 +22,8 @@ func SendLINEMessage (id string) {
 
 	var messages []linebot.SendingMessage
 	// append some message to messages
-	text := linebot.NewTextMessage("linebot test.")
+	randomText := botText[rand.Intn(len(botText))]
+	text := linebot.NewTextMessage(randomText)
 	messages = append(messages, text)
 	_, err = bot.PushMessage(id, messages...).Do()
 	if err != nil {
