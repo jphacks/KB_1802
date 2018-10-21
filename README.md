@@ -49,13 +49,13 @@ LINEでの通知に始まり、最終的には汚部屋をTwitterに晒し上げ
 #### API・データ
 今回スポンサーから提供されたAPI、製品などの外部技術があれば記述をして下さい。
 
-* 
-* 
+* LINE Messaging API
+* IFTTT
 * 
 
 #### フレームワーク・ライブラリ・モジュール
 * AWS
-* 
+* gin (golang)
 
 #### デバイス
 * Raspberry pi
