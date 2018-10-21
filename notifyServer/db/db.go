@@ -45,7 +45,7 @@ func initNotify() {
 	//MySQL用にinit
 	dbmapNotify = &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{Engine: "InnoDB", Encoding: "utf8"}}
 
-	//テーブル情報を登録
+	//テーブル情報を登	録
 	dbmapNotify.AddTableWithName(NotifyInfo{}, "notify")
 
 	//テーブル作成
