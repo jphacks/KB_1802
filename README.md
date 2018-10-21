@@ -4,7 +4,7 @@
 ![Soisy](presen/prs_title.png)
 
 ## 製品概要
-### Cleaning Tech
+### 掃除 X Tech
 
 ### 背景（製品開発のきっかけ、課題等）
 ![Soisy](presen/prs_concept.png)
