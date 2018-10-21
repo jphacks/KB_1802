@@ -178,7 +178,7 @@ def sqlreadold():
 
     cur.execute("SELECT * FROM camData as m WHERE NOT EXISTS "
                     "(SELECT 1 FROM camData as s WHERE isClean=1)")
-    add=str(cur.fetchall()[0][0])
+    add=str(cur.fetchall())
 
     print(add)
     return cv2.imread(add)
